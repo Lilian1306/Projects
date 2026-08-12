@@ -1,0 +1,54 @@
+name: Backend CI (.NET 8)
+
+on:
+  push:
+    branches: [ main, development ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    branches: [ main, development ]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-ci.yml'
+
+jobs:
+  build-and-test:
+    name: Build & Test Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: |
+          if ls *.sln */*.csproj *.csproj 1> /dev/null 2>&1; then
+            dotnet restore
+          else
+            echo "No .sln or .csproj found yet in backend directory. Skipping restore."
+          fi
+        working-directory: ./backend
+
+      - name: Build solution
+        run: |
+          if ls *.sln */*.csproj *.csproj 1> /dev/null 2>&1; then
+            dotnet build --no-restore --configuration Release
+          else
+            echo "No .sln or .csproj found yet in backend directory. Skipping build."
+          fi
+        working-directory: ./backend
+
+      - name: Run xUnit Tests
+        run: |
+          if ls *.sln */*.csproj *.csproj 1> /dev/null 2>&1; then
+            dotnet test --no-build --configuration Release --verbosity normal
+          else
+            echo "No .sln or .csproj found yet in backend directory. Skipping tests."
+          fi
+        working-directory: ./backend
