@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MesaSitec.Api/MesaSitec.Api.csproj" />
+    <Project Path="src/MesaSitec.Aplicacion/MesaSitec.Aplicacion.csproj" />
+    <Project Path="src/MesaSitec.Dominio/MesaSitec.Dominio.csproj" />
+    <Project Path="src/MesaSitec.Infraestructura/MesaSitec.Infraestructura.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MesaSitec.Tests/MesaSitec.Tests.csproj" />
+  </Folder>
+</Solution>

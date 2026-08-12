@@ -1,0 +1,54 @@
+name: Frontend CI (Vue 3 + Vite + TypeScript)
+
+on:
+  push:
+    branches: [ main, development ]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-ci.yml'
+  pull_request:
+    branches: [ main, development ]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-ci.yml'
+
+jobs:
+  build-and-typecheck:
+    name: Typecheck & Build Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Install dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm ci || npm install
+          else
+            echo "No package.json found yet in frontend directory. Skipping install."
+          fi
+        working-directory: ./frontend
+
+      - name: Run TypeScript typecheck (tsc --noEmit)
+        run: |
+          if [ -f package.json ]; then
+            npx tsc --noEmit
+          else
+            echo "No package.json found yet in frontend directory. Skipping typecheck."
+          fi
+        working-directory: ./frontend
+
+      - name: Build frontend
+        run: |
+          if [ -f package.json ]; then
+            npm run build
+          else
+            echo "No package.json found yet in frontend directory. Skipping build."
+          fi
+        working-directory: ./frontend
