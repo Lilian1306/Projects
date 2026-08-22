@@ -76,18 +76,6 @@ Todas las cuentas tienen la contraseña: **`Sitec.2026`**
 
 ---
 
-## Variables de Entorno
-
-Copia `.env.example` a `.env` y ajusta si es necesario:
-
-```bash
-JWT_SECRET=SuperSecretKeyForMesaSitec2026_AtLeast32BytesLong!
-SEED_FECHA_BASE=2026-01-15T08:00:00Z
-VITE_API_URL=http://localhost:5080/api/v1
-```
-
----
-
 ## Ejecutar Pruebas Unitarias
 
 ```bash
