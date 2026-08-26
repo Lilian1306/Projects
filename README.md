@@ -4,7 +4,7 @@ This repository centralizes my development projects. Below is the list of applic
 
 | Project | Folder | Status / Live Demo |
 | :--- | :--- | :--- |
-| **🛍️ Discover Atitlán Panajachel** | `/artesanias-pana` | [Live Demo ↗️](https://projects-56xx.vercel.app/) |
+| **🛍️ Atitlán Panajachel** | `/pueblos-pana` | [Live Demo ↗️](https://projects-56xx.vercel.app/) |
 | **💻 Saas B2B** | `/Saas-Project` | [Live Demo ↗️](https://mesasitec-prueba.vercel.app/login) |
 | **🩺 Patient Management** | `/pacientes-zustand` | [Live Demo ↗️](https://pacientes-zustand-psi.vercel.app/) |
 | **🍹 Drink Finder** | `/drink-finder` | [Live Demo ↗️](https://drink-finder-page.vercel.app/) |
